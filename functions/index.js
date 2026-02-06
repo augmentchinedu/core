@@ -23,7 +23,7 @@ export function sanitizePath(p) {
     .replace(/\.\./g, ""); // prevent directory traversal
 }
 
-export function getFile(client = "the-great-unknown", reqPath = "/") {
+export function getFile(client = "krane", reqPath = "/") {
   const cleaned = sanitizePath(decodeURIComponent(reqPath));
   const hasExt = path.extname(cleaned) !== "";
   const filePath = hasExt ? cleaned : "index.html";

@@ -9,48 +9,6 @@ let explore = [
 
 export const clients = [
   {
-    username: "the-great-unknown",
-    hosts: ["great-unknown.onrender.com"],
-    name: "The Great Unknown",
-    type: "existence",
-    package: "the-great-unknown",
-    content: {
-      navigation: {
-        drawer: {
-          bottom: [
-            {
-              label: "Home",
-              icon: {
-                active: "fairpay-pie-filled.png",
-                inactive: "fairpay-pie-outline.png",
-              },
-              route: "/home",
-            },
-            {
-              label: "Settings",
-              icon: {
-                active: "fairpay-pie-filled.png",
-                inactive: "fairpay-pie-outline.png",
-              },
-              route: "/settings",
-            },
-          ],
-        },
-        sidebar: {
-          left: [],
-        },
-        top: [],
-      },
-    },
-    administrators: [
-      {
-        email: "theyatsarbrand@gmail.com",
-        password: "12345678",
-        role: "owner",
-      },
-    ],
-  },
-  {
     username: "gallery",
     hosts: ["gallery.gkrane.online"],
     name: "Gallery",
