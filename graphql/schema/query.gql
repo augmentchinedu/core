@@ -1,0 +1,11 @@
+type Query {
+  client(username: String, key: String): Client
+  user: User
+  game(name: String!): Game
+
+  products: [Product!]!
+  product(id: ID!): Product
+
+  institutions: [Institution!]!
+  places: [Place!]!
+}

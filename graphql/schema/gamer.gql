@@ -1,0 +1,30 @@
+interface Game {
+  id: ID!
+  name: String!
+  players: [ID!]!
+  createdAt: String!
+}
+
+type Chess implements Game {
+  id: ID!
+  name: String!
+  createdAt: String!
+  board: [[String]]!
+  players: [ID!]!
+}
+
+type Ludo implements Game {
+  id: ID!
+  name: String!
+  createdAt: String!
+  positions: JSON
+  players: [ID!]!
+}
+
+type Monopoly implements Game {
+  id: ID!
+  name: String!
+  createdAt: String!
+  boardState: JSON
+  players: [ID!]!
+}

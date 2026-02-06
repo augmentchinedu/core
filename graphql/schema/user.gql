@@ -1,0 +1,42 @@
+scalar JSON
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  fullname: JSON
+  createdAt: String!
+  transactions: JSON
+}
+
+input SignUpInput {
+  appName: String!
+  username: String!
+  fullname: String!
+  email: String!
+  password: String!
+}
+
+input SignInInput {
+  appName: String!
+  identifier: String!
+  password: String!
+}
+
+type AuthPayload {
+  token: String # remove the "!" to allow null
+  refreshToken: String
+  user: User
+  error: TGUError
+}
+
+type TGUError {
+  code: String!
+  message: String!
+}
+
+type Mutation {
+  signup(input: SignUpInput!): AuthPayload!
+  signin(input: SignInInput!): AuthPayload!
+  refreshToken(token: String!): AuthPayload!
+}
