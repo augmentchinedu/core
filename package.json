@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node --import dotenv/config --watch  index.js",
+    "dev:codespace": "../scripts/dev-codespace.sh",
     "apollo": "node --import dotenv/config --watch  ./graphql/server/index.js",
     "test": "vitest"
   },
