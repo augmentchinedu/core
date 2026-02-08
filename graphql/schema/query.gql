@@ -1,3 +1,5 @@
+scalar JSON
+
 type Query {
   client(username: String, key: String): Client
   user: User
@@ -5,7 +7,7 @@ type Query {
   game(name: String!): Game
 
   store(handle: String!): Store
-  stores(limit: Int = 20, offset: Int = 0): [Store!]!
+  stores: JSON
 
   product(id: ID!): Product
   products(handle: String!): [Product!]!

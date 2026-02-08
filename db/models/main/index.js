@@ -29,4 +29,5 @@ export default {
   Hair,
   Jewelry,
   Skincare,
+  Store,
 };

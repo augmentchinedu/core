@@ -19,14 +19,8 @@ input CreateStoreInput {
   handle: String!
   type: String!
   bio: String!
-  creator: ID!
-}
-
-type CreateStorePayload {
-  store: Store
-  error: TGUError
 }
 
 type Mutation {
-  createStore(input: CreateStoreInput!): CreateStorePayload!
+  createStore(input: CreateStoreInput!): Store!
 }

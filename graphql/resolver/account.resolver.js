@@ -65,24 +65,16 @@ export const accountResolver = {
         content: client.content,
       };
     },
-    user: async (_, __, { host, db, identity }) => {
+    user: async (_, __, { host, db, id }) => {
       // identity comes from the token (user id, email, or username)
-      if (!identity) {
+      if (!id) {
         throw new Error("Unauthorized: No identity found");
       }
-
-      console.log(identity);
 
       let user;
 
       // Find user by _id, username, or email
-      user = await db.accounts.models.User.findOne({
-        $or: [
-          { _id: identity }, // if identity is userId
-          { username: identity }, // if identity is username
-          { email: identity }, // if identity is email
-        ],
-      });
+      user = await db.accounts.models.User.findOne({ _id: id });
 
       if (!user) {
         throw new Error("User not found");
@@ -96,68 +88,6 @@ export const accountResolver = {
         username: "test",
         email: "123@abc.com",
         createdAt: Date.now(),
-        transactions: [
-          {
-            type: "network",
-            amount: 100,
-            date: Date.now(),
-            status: "success",
-            recipient: "07069199000",
-            network: {
-              name: "MTN",
-              code: "MTN",
-              imgURL: "mtn.png",
-            },
-          },
-          {
-            type: "network",
-            amount: 100,
-            date: Date.now(),
-            status: "success",
-            recipient: "07069199000",
-            network: {
-              name: "MTN",
-              code: "MTN",
-              imgURL: "mtn.png",
-            },
-          },
-          {
-            type: "network",
-            amount: 100,
-            date: Date.now(),
-            status: "success",
-            recipient: "07069199000",
-            network: {
-              name: "MTN",
-              code: "MTN",
-              imgURL: "mtn.png",
-            },
-          },
-          {
-            type: "network",
-            amount: 100,
-            date: Date.now(),
-            status: "success",
-            recipient: "07069199000",
-            network: {
-              name: "MTN",
-              code: "MTN",
-              imgURL: "mtn.png",
-            },
-          },
-          {
-            type: "network",
-            amount: 100,
-            date: Date.now(),
-            status: "success",
-            recipient: "07069199000",
-            network: {
-              name: "MTN",
-              code: "MTN",
-              imgURL: "mtn.png",
-            },
-          },
-        ],
       };
     },
   },

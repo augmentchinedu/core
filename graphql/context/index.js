@@ -18,18 +18,18 @@ export const context = async ({ req, connectionParams }) => {
       token = connectionParams.token;
     }
 
-    let identity = null;
+    let id = null;
     if (token) {
       try {
         const decoded = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
-        identity = decoded.id;
+        id = decoded.id;
       } catch (err) {
         console.warn("Invalid token:", err.message);
       }
     }
 
     return {
-      identity,
+      id,
       host: req?.hostname || null,
       db: { main, accounts, sports, institutions, products },
     };
