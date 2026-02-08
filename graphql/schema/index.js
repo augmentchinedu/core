@@ -9,6 +9,7 @@ ${load("query.gql")}
 ${load("client.gql")}
 ${load("user.gql")}
 ${load("gamer.gql")}
+${load("stores.gql")}
 ${load("product.gql")}
 ${load("place.gql")}
 ${load("institution.gql")}

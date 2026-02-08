@@ -1,10 +1,14 @@
 type Query {
   client(username: String, key: String): Client
   user: User
+
   game(name: String!): Game
 
-  products: [Product!]!
+  store(handle: String!): Store
+  stores(limit: Int = 20, offset: Int = 0): [Store!]!
+
   product(id: ID!): Product
+  products(handle: String!): [Product!]!
 
   institutions: [Institution!]!
   places: [Place!]!

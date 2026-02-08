@@ -3,6 +3,7 @@ import { productResolver } from "./product.resolver.js";
 import { gameResolver } from "./game.resolver.js";
 import { placeResolver } from "./place.resolver.js";
 import { institutionResolver } from "./institution.resolver.js";
+import { storesResolver } from "./stores.resolver.js";
 
 // graphql/utils/wrapAllResolvers.js
 
@@ -43,6 +44,7 @@ export const resolvers = wrapAllResolvers({
     ...productResolver.Query,
     ...placeResolver.Query,
     ...institutionResolver.Query,
+    ...storesResolver.Query,
   },
 
   Mutation: {
@@ -51,6 +53,7 @@ export const resolvers = wrapAllResolvers({
     ...gameResolver.Mutation,
     ...placeResolver.Mutation,
     ...institutionResolver.Mutation,
+    ...storesResolver.Mutation,
   },
   Game: {
     ...gameResolver.Game,

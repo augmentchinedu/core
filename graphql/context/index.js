@@ -1,10 +1,10 @@
 import jwt from "jsonwebtoken";
 import {
+  main,
   accounts,
   sports,
   products,
   institutions,
-  stores,
 } from "../../db/index.js";
 
 export const context = async ({ req, connectionParams }) => {
@@ -31,7 +31,7 @@ export const context = async ({ req, connectionParams }) => {
     return {
       identity,
       host: req?.hostname || null,
-      db: { accounts, sports, institutions, products, stores },
+      db: { main, accounts, sports, institutions, products },
     };
   } catch (err) {
     console.error("🚨 GraphQL CONTEXT ERROR:", err);

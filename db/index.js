@@ -3,9 +3,9 @@ import { DB } from "../class/index.js";
 import {
   accounts,
   sports,
+  main,
   institutions,
   products,
-  stores,
 } from "./models/index.js";
 
 const { MONGODB_USERNAME, MONGODB_PASSWORD, MONGODB_HOST } = process.env;
@@ -18,7 +18,7 @@ let accountsDB;
 let sportsDB;
 let institutionsDB;
 let productsDB;
-let storesDB;
+let mainDB;
 
 export async function connectDatabases() {
   const createDB = async (dbName, models) => {
@@ -41,7 +41,7 @@ export async function connectDatabases() {
   sportsDB = await createDB("sports", sports);
   institutionsDB = await createDB("institutions", institutions);
   productsDB = await createDB("products", products);
-  storesDB = await createDB("stores", stores);
+  mainDB = await createDB("main", main);
 
   /**
    * Create an Entity (database) and attach models
@@ -52,7 +52,7 @@ export async function connectDatabases() {
   console.info("Sport models:", Object.keys(sportsDB.models));
   console.info("Institutions models:", Object.keys(institutionsDB.models));
   console.info("Products models:", Object.keys(productsDB.models));
-  console.info("Stores models:", Object.keys(storesDB.models));
+  console.info("Main models:", Object.keys(mainDB.models));
 }
 
 // Export directly as named exports
@@ -61,5 +61,5 @@ export {
   sportsDB as sports,
   institutionsDB as institutions,
   productsDB as products,
-  storesDB as stores,
+  mainDB as main,
 };

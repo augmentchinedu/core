@@ -1,0 +1,32 @@
+scalar JSON
+
+type Store {
+  id: ID!
+  name: String!
+  handle: String!
+  type: String!
+  bio: String!
+  creator: ID!
+}
+
+type TGUError {
+  code: String!
+  message: String!
+}
+
+input CreateStoreInput {
+  name: String!
+  handle: String!
+  type: String!
+  bio: String!
+  creator: ID!
+}
+
+type CreateStorePayload {
+  store: Store
+  error: TGUError
+}
+
+type Mutation {
+  createStore(input: CreateStoreInput!): CreateStorePayload!
+}
