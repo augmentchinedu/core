@@ -1,40 +1,6 @@
-// /graphql/resolvers/account.resolver.js
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import { v7 as uuidv7 } from "uuid";
+// /graphql/resolvers/client.resolver.js
 
-import { filterUserByHost } from "../../utility/index.js";
-
-const { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET, VITE_DEVELOPMENT_KEY } =
-  process.env;
-
-async function generateTokens(userId) {
-  const accessToken = jwt.sign({ id: userId }, JWT_ACCESS_SECRET, {
-    expiresIn: "30d",
-  });
-  const refreshToken = jwt.sign({ id: userId }, JWT_REFRESH_SECRET, {
-    expiresIn: "30d",
-  });
-  return { accessToken, refreshToken };
-}
-
-function generateUsername() {
-  return `user_${uuidv7().slice(0, 8)}`;
-}
-
-function parseFullname(fullname = "") {
-  if (!fullname || typeof fullname !== "string") {
-    return { first: "", middle: "", last: "" };
-  }
-
-  const parts = fullname.trim().replace(/\s+/g, " ").split(" ");
-
-  return {
-    first: parts[0] || "",
-    middle: parts.length > 2 ? parts.slice(1, -1).join(" ") : "",
-    last: parts.length > 1 ? parts[parts.length - 1] : "",
-  };
-}
+const { VITE_DEVELOPMENT_KEY } = process.env;
 
 export const clientResolver = {
   Query: {
