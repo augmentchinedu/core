@@ -14,7 +14,7 @@ export const storesResolver = {
     createStore: async (_, { input }, { db, id }) => {
       const modelName = input.type.toLowerCase();
 
-      const model = Object.entries(db.main.models).find(
+      const model = Object.entries(db.main.models.Store.discriminators).find(
         ([name]) => name.toLowerCase() === modelName,
       )?.[1];
 

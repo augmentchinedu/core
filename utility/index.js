@@ -1,4 +1,4 @@
-import { accounts } from "../db/index.js";
+import { main } from "../db/index.js";
 import { clients } from "../data/index.js";
 
 export function filterUserByHost(host, user) {
@@ -6,7 +6,7 @@ export function filterUserByHost(host, user) {
 }
 
 export async function seedClients() {
-  const { Client } = accounts.models;
+  const { Client } = main.models;
 
   for (const client of clients) {
     await Client.findOneAndUpdate(

@@ -1,5 +1,4 @@
 // /graphql/resolvers/account.resolver.js
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { v7 as uuidv7 } from "uuid";
 
@@ -36,35 +35,8 @@ function parseFullname(fullname = "") {
   };
 }
 
-export const accountResolver = {
+export const userResolver = {
   Query: {
-    client: async (_, { username, key }, { host, db }) => {
-      let client;
-
-      if (username && key === VITE_DEVELOPMENT_KEY) {
-        console.log("DEV MODE Client", username);
-
-        client = await db.accounts.models.Client.findOne({ username });
-      } else {
-        console.log("PROD MODE Host", host);
-
-        client = await db.accounts.models.Client.findOne({
-          hosts: host,
-        });
-      }
-
-      if (!client) {
-        throw new Error("Client not found");
-      }
-
-      return {
-        id: client._id,
-        name: client.name,
-        username: client.username,
-        type: client.type,
-        content: client.content,
-      };
-    },
     user: async (_, __, { host, db, id }) => {
       // identity comes from the token (user id, email, or username)
       if (!id) {
@@ -74,7 +46,7 @@ export const accountResolver = {
       let user;
 
       // Find user by _id, username, or email
-      user = await db.accounts.models.User.findOne({ _id: id });
+      user = await db.main.models.User.findOne({ _id: id });
 
       if (!user) {
         throw new Error("User not found");
@@ -114,7 +86,7 @@ export const accountResolver = {
 
       try {
         // 1️⃣ Check if user exists
-        const existing = await db.accounts.models.User.findOne({
+        const existing = await db.main.models.User.findOne({
           $or: [{ email }, ...(username ? [{ username }] : [])],
         });
 
@@ -140,7 +112,7 @@ export const accountResolver = {
           : generateUsername();
 
         // 4️⃣ Create user
-        const user = await db.accounts.models.User.create({
+        const user = await db.main.models.User.create({
           _id: id,
           username: finalUsername,
           email,
@@ -189,7 +161,7 @@ export const accountResolver = {
       const { identifier, password, appName } = input; // expect appName in input
 
       try {
-        const user = await db.accounts.models.User.findOne({
+        const user = await db.main.models.User.findOne({
           $or: [{ email: identifier }, { username: identifier }],
         }).select("+password");
 

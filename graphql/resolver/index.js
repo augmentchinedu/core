@@ -1,4 +1,5 @@
-import { accountResolver } from "./account.resolver.js";
+import { userResolver } from "./user.resolver.js";
+import { clientResolver } from "./client.resolver.js";
 import { productResolver } from "./product.resolver.js";
 import { gameResolver } from "./game.resolver.js";
 import { placeResolver } from "./place.resolver.js";
@@ -24,7 +25,7 @@ export function wrapAllResolvers(resolvers) {
           } catch (err) {
             console.error(
               `🚨 GraphQL Resolver Error in ${typeName}.${fieldName}:`,
-              err
+              err,
             );
             throw err; // rethrow so Apollo still sends proper GraphQL error
           }
@@ -40,7 +41,8 @@ export function wrapAllResolvers(resolvers) {
 
 export const resolvers = wrapAllResolvers({
   Query: {
-    ...accountResolver.Query,
+    ...userResolver.Query,
+    ...clientResolver.Query,
     ...productResolver.Query,
     ...placeResolver.Query,
     ...institutionResolver.Query,
@@ -48,7 +50,8 @@ export const resolvers = wrapAllResolvers({
   },
 
   Mutation: {
-    ...accountResolver.Mutation,
+    ...userResolver.Mutation,
+    ...clientResolver.Mutation,
     ...productResolver.Mutation,
     ...gameResolver.Mutation,
     ...placeResolver.Mutation,

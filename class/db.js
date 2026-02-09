@@ -33,23 +33,28 @@ class DB {
   /**
    * Register a model on this entity
    */
-  useModel(model) {
-    if (!this.db) {
-      throw new Error("DB not connected");
+  useModel(modelDef) {
+    if (!this.db) throw new Error("DB not connected");
+
+    const { name, schema, collection, discriminators } = modelDef;
+
+    // Base model
+    let Model = this.db.models[name];
+    if (!Model) {
+      Model = this.db.model(name, schema, collection);
     }
 
-    const name = model.modelName;
-
-    // Prevent overwrite
-    if (this.db.models[name]) {
-      this.models[name] = this.db.models[name];
-      return this.models[name];
+    // ✅ Register discriminators ON THIS CONNECTION
+    if (discriminators) {
+      for (const [discName, discSchema] of Object.entries(discriminators)) {
+        if (!Model.discriminators?.[discName]) {
+          Model.discriminator(discName, discSchema);
+        }
+      }
     }
 
-    const cloned = this.db.model(name, model.schema, model.collection.name);
-
-    this.models[name] = cloned;
-    return cloned;
+    this.models[name] = Model;
+    return Model;
   }
 
   async close() {

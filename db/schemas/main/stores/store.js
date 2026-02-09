@@ -15,6 +15,12 @@ const storeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   handle: { type: String, unique: true, required: true },
   owner: [Owner], // <-- Fixed here
+  bio: { type: String, default: "" },
+  img: {
+    type: String,
+    default:
+      "https://storage.googleapis.com/great-unknown.appspot.com/images/clients/stores/store.png",
+  },
   createdAt: { type: Date, default: Date.now },
 });
 
