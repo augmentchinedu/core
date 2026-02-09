@@ -1,6 +1,7 @@
 // /graphql/resolvers/account.resolver.js
 import jwt from "jsonwebtoken";
-import { v7 as uuidv7 } from "uuid";
+
+import crypto from "crypto";
 
 import { filterUserByHost } from "../../utility/index.js";
 
@@ -18,7 +19,7 @@ async function generateTokens(userId) {
 }
 
 function generateUsername() {
-  return `user_${uuidv7().slice(0, 8)}`;
+  return `user_${crypto.randomUUID().slice(0, 8)}`;
 }
 
 function parseFullname(fullname = "") {
@@ -106,7 +107,7 @@ export const userResolver = {
         const name = parseFullname(fullname);
 
         // 3️⃣ Generate ID + username
-        const id = uuidv7().replace(/-/g, "");
+        const id = crypto.randomUUID().replace(/-/g, "");
         const finalUsername = username
           ? username.toLowerCase()
           : generateUsername();
