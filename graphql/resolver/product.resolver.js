@@ -1,5 +1,3 @@
-import { v7 as uuidv7 } from "uuid";
-
 export const productResolver = {
   Query: {
     products: async (_, __, { db }) => {
