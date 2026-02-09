@@ -27,14 +27,9 @@ export const storesResolver = {
         owner: [{ id }],
       });
 
-      return {
-        id: store._id,
-        name: store.name,
-        handle: store.handle,
-        type: store.__t,
-        bio: store.bio,
-        creator: store.owner,
-      };
+      store.type = input.type; // add type for frontend
+
+      return store;
     },
   },
 };

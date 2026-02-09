@@ -5,6 +5,7 @@ type Store {
   name: String!
   handle: String!
   type: String!
+  img: String!
   bio: String!
   creator: ID!
 }
