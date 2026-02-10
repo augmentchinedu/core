@@ -21,6 +21,7 @@ import { context } from "./graphql/context/index.js"; // ✅ your existing conte
 
 import { connectDatabases } from "./db/index.js";
 import { seedClients } from "./utility/index.js";
+import { loadDomains } from "./functions/index.js";
 
 // -----------------------------
 // Express setup
@@ -96,6 +97,7 @@ server.on("upgrade", (req, socket, head) => {
 
 await connectDatabases();
 await seedClients();
+await loadDomains(); // Load domains into memory for routing
 
 server.listen(PORT, () => {
   console.log("✅ Unknown Server Running on port", PORT);

@@ -514,3 +514,18 @@ export const clients = [
     ],
   },
 ];
+
+const domains = {
+  stores: [],
+  clients: [
+    "gallery",
+    "games",
+    "stores",
+    "professionals",
+    "contacts",
+    "realty",
+  ],
+};
+
+export const getDomains = () => domains;
+export const setDomains = (type, names) => (domains[type] = names);

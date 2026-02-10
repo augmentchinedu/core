@@ -3,12 +3,17 @@ import path from "path";
 import mime from "mime-types";
 
 import * as fn from "../functions/index.js";
-import { clients } from "../data/index.js";
+import { getDomains } from "../data/index.js";
 
-function getClientByHost(host) {
-  return clients.find((client) =>
-    client.hosts.some((h) => host === h || host.endsWith(h))
-  );
+function getClientByDomain(domain) {
+  const domains = getDomains();
+  for (const [type, names] of Object.entries(domains)) {
+    if (names.includes(domain)) {
+      if (type === "stores") return "store";
+      if (type === "clients") return domain.split(".")[0];
+    }
+  }
+  return null;
 }
 
 const home = async (req, res, next) => {
@@ -42,7 +47,13 @@ const home = async (req, res, next) => {
   try {
     const host = req.headers.host.split(":")[0];
 
-    const client = getClientByHost(host);
+    const client = getClientByDomain(host);
+    console.log(
+      "Requested domain:",
+      host,
+      "-> Client:",
+      client?.username || "None",
+    );
 
     if (!client) {
       return res.status(404).send("Unknown domain");
