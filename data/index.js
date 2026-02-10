@@ -114,10 +114,10 @@ export const clients = [
   },
   {
     username: "yatsar",
-    hosts: ["yatsar.store"],
+    hosts: ["yatsar.gkrane.online", "yatsar.store"],
     name: "Yatsar",
-    type: "cosmetics",
-    package: "dotstore",
+    type: "skincare",
+    package: "store",
     content: {
       navigation: {
         drawer: {
@@ -180,7 +180,7 @@ export const clients = [
       },
     ],
   },
-  
+
   {
     username: "stores",
     hosts: ["stores.gkrane.online"],
@@ -231,164 +231,6 @@ export const clients = [
         top: [],
       },
     },
-    administrators: [
-      {
-        email: "theyatsarbrand@gmail.com",
-        password: "12345678",
-        role: "owner",
-      },
-    ],
-  },
-  {
-    username: "spendly",
-    hosts: ["spendly.gkrane.online"],
-    name: "Spendly",
-    type: "expense-tracker",
-    package: "expense-tracker",
-    content: {
-      navigation: {
-        drawer: {
-          bottom: [
-            {
-              label: "Home",
-              icon: { id: "material-symbols:home" },
-              route: "/home",
-            },
-            {
-              label: "Transactions",
-              icon: {
-                id: "material-symbols:credit-card-outline",
-              },
-              route: "/transactions",
-            },
-            {
-              label: "Analytics",
-              icon: { id: "material-symbols:insert-chart" },
-              route: "/analytics",
-            },
-            {
-              label: "Account",
-              icon: { id: "material-symbols:person" },
-              route: "/account",
-            },
-          ],
-        },
-        sidebar: {
-          left: [],
-        },
-        top: [],
-      },
-    },
-    administrators: [
-      {
-        email: "theyatsarbrand@gmail.com",
-        password: "12345678",
-        role: "owner",
-      },
-    ],
-  },
-  {
-    username: "zendaa",
-    hosts: ["zendaa.gkrane.online"],
-    name: "Zendaa",
-    type: "finance",
-    package: "finance",
-    content: {
-      navigation: {
-        drawer: {
-          bottom: [
-            {
-              label: "Home",
-              icon: {
-                active: "MaterialSymbolsHome.svg",
-                inactive: "MaterialSymbolsHome.svg",
-              },
-              route: "/home",
-            },
-            {
-              label: "Profile",
-              icon: {
-                active: "MaterialSymbolsPerson.svg",
-                inactive: "MaterialSymbolsPerson.svg",
-              },
-              route: "/profile",
-            },
-            {
-              label: "Settings",
-              icon: {
-                active: "MaterialSymbolsSettingsOutline.svg",
-                inactive: "MaterialSymbolsSettingsOutline.svg",
-              },
-              route: "/settings",
-            },
-          ],
-        },
-        sidebar: {
-          left: [],
-        },
-        top: [],
-      },
-    },
-
-    administrators: [
-      {
-        email: "theyatsarbrand@gmail.com",
-        password: "12345678",
-        role: "owner",
-      },
-    ],
-  },
-  {
-    username: "kora",
-    hosts: ["kora.gkrane.online"],
-    name: "Kora",
-    type: "finance",
-    package: "finance",
-    content: {
-      navigation: {
-        drawer: {
-          bottom: [
-            {
-              label: "Home",
-              icon: {
-                active: "fairpay-pie-filled.png",
-                inactive: "fairpay-pie-outline.png",
-              },
-              route: "/home",
-            },
-            {
-              label: "Wallet",
-              icon: {
-                active: "fairpay-pie-filled.png",
-                inactive: "fairpay-pie-outline.png",
-              },
-              route: "/wallet",
-            },
-            {
-              label: "Insights",
-              icon: {
-                active: "fairpay-pie-filled.png",
-                inactive: "fairpay-pie-outline.png",
-              },
-              route: "/insights",
-            },
-            {
-              label: "Me",
-              icon: {
-                active: "fairpay-pie-filled.png",
-                inactive: "fairpay-pie-outline.png",
-              },
-              route: "/me",
-            },
-          ],
-        },
-        sidebar: {
-          left: [],
-        },
-        top: [],
-      },
-    },
-
     administrators: [
       {
         email: "theyatsarbrand@gmail.com",
